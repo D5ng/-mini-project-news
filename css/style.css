@@ -4,4 +4,7 @@
 @import url('./common/footer.css');
 
 /* Main */
-@import url('./main/news.css');
+@import url('./main/style.css');
+@import url('./main/search.css');
+@import url('./main/lists.css');
+@import url('./main/pagination.css');

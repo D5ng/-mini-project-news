@@ -1,0 +1,39 @@
+.news-search { 
+  margin-top: 40px;
+}
+
+.news-search__form {
+  margin: 30px 0;
+}
+
+.news-search__inputBox { 
+  position: relative;  
+  overflow: hidden;
+  border: 1px solid var(--main);
+  border-radius: 50px;
+}
+
+.news-search__inputBox button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.news-search__inputBox button i {
+  font-size: 24px;
+}
+
+.news-search__inputBox input {
+  width: 100%;
+  height: 50px;
+  padding: 0 20px; 
+  border: none;
+}
+
+.news-search__inputBox input:focus {
+  border: none;
+  outline: none;
+}

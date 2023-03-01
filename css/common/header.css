@@ -25,4 +25,7 @@
 
 .header-category__list button {
   line-height: 79px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
 }
