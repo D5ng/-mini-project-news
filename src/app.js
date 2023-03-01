@@ -21,9 +21,9 @@ export default class App extends Component {
 
     new Header(header);
     new Footer(footer);
-    new NewsSearch(newsSearchElem);
+    new NewsSearch(newsSearchElem, {});
     new NewsList(newsListElem, {
-      state: this.state
+      state: this.state,
     });
     new Pagination(pagination);
   }
@@ -39,8 +39,22 @@ export default class App extends Component {
     });
   }
 
+  fetchKeyword(inputValue, currentPage = 1) {
+    this.loading(document.querySelector(".news-list"));
+    this.props.api.fetchKeyword(inputValue, currentPage).then((result) => {
+      this.setState({ list: result.articles });
+    });
+  }
+
   fetchFirstNews() {
     this.fetchNewsList();
+  }
+  
+  setEvent() {
+    this.addEvent("submit", ".news-search__form", (e) => {
+      e.preventDefault();
+      this.fetchKeyword(e.target[0].value);
+    });
   }
 
   template() {

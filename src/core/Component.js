@@ -30,6 +30,13 @@ export default class Component {
     this.render();
   }
 
+  addEvent(type, selector, callback){
+    this.target.addEventListener(type, (e) => {
+      if(!e.target.closest(selector)) return false
+      callback(e);
+    })
+  }
+
   setEvent() {}
   fetchFirstNews(){};
 }
