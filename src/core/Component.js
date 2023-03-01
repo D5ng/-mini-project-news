@@ -7,6 +7,7 @@ export default class Component {
     this.render();
     this.mounted();
     this.setEvent();
+    this.fetchFirstNews();
   }
 
   setUp() {}
@@ -30,4 +31,5 @@ export default class Component {
   }
 
   setEvent() {}
+  fetchFirstNews(){};
 }

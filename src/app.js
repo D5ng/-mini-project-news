@@ -22,8 +22,25 @@ export default class App extends Component {
     new Header(header);
     new Footer(footer);
     new NewsSearch(newsSearchElem);
-    new NewsList(newsListElem);
+    new NewsList(newsListElem, {
+      state: this.state
+    });
     new Pagination(pagination);
+  }
+
+  loading(element) {
+    element.innerHTML = "뉴스 데이터를 불러오는중 ...";
+  }
+
+  fetchNewsList(currentPage = 1) {
+    this.loading(document.querySelector(".news-list"));
+    this.props.api.fetchHeadline(currentPage).then((result) => {
+      this.setState({ list: result.articles });
+    });
+  }
+
+  fetchFirstNews() {
+    this.fetchNewsList();
   }
 
   template() {

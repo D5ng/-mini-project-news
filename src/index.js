@@ -3,4 +3,5 @@ import { API_KEY } from "./api/api.js";
 import API from "./api/index.js";
 
 const api = new API(API_KEY);
-const app = new App(document.getElementById("App", { api }));
+
+new App(document.getElementById("App"), { api })
