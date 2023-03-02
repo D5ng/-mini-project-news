@@ -5,45 +5,29 @@ export default class Pagination extends Component {
     return `
       <ul class="pagination-lists">
         <li class="prev">
-          <button><</button>
+          <button>&lt;</button>
         </li>
-        <li class="active">
-          <button>1</button>
-        </li>
-        <li class="pagination-number">
-          <button>2</button>
-        </li>
-        <li class="pagination-number">
-          <button>3</button>
-        </li>
-        <li class="pagination-number">
-          <button>4</button>
-        </li>
-        <li class="pagination-number">
-          <button>5</button>
-        </li>
-        <li class="pagination-number">
-          <button>6</button>
-        </li>
-        <li class="pagination-number">
-          <button>7</button>
-        </li>
-        <li class="pagination-number">
-          <button>8</button>
-        </li>
-        <li class="pagination-number">
-          <button>9</button>
-        </li>
-        <li class="pagination-number">
-          <button>10</button>
-        </li>
+        ${this.createPagination()}
         <li class="next">
-          <button>></button>
+          <button>&gt;</button>
         </li>
-      <li class="next">
-        <button></button>
-      </li>
     </ul>
     `;
+  }
+
+  createPagination() {
+    const { lastPage, firstPage, currentPage } = this.props.pageInfo;
+
+    let html = ``;
+
+    for (let i = firstPage; i <= lastPage; i++) {
+      html += `
+        <li class="pagination-number">
+          <button class=${currentPage === i ? "active" : ""}>${i}</button>
+        </li>
+      `;
+    }
+
+    return html;
   }
 }

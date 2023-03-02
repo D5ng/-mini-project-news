@@ -9,19 +9,25 @@ export default class API {
       const response = await fetch(API);
 
       if (response.ok) {
-        const responseData = response.json();
+        const responseData = await response.json();
         return responseData;
-      }
-    } catch (error) {
-      throw new Error("News API Error", error);
+      } 
+
+      const errorData = await response.json();
+      return errorData
+      
+    } catch (e) {
+      throw new Error("News API Error");
     }
   }
 
-  async fetchHeadline(pageNumber = 1){
-    return await this.request(`https://newsapi.org/v2/top-headlines?country=us&pageSize=10&page=${pageNumber}&apiKey=${this.API_KEY}`);
-  }
-
-  async fetchKeyword(keyword, pageNumber = 1){
-    return await this.request(`https://newsapi.org/v2/everything?q=${keyword}&pageSize=10&page=${pageNumber}&apiKey=${this.API_KEY}`)
+  async fetchNews(keyword = "", pageNumber = 1) {
+    return keyword
+      ? await this.request(
+          `https://newsapi.org/v2/everything?q=${keyword}&pageSize=10&page=${pageNumber}&apiKey=${this.API_KEY}`
+        )
+      : await this.request(
+          `https://newsapi.org/v2/top-headlines?country=us&pageSize=10&page=${pageNumber}&apiKey=${this.API_KEY}`
+        );
   }
 }
